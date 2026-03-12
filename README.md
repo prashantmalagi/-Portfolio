@@ -21,7 +21,7 @@ It showcases my skills, projects, resume, and contact information.
 
 ## Live Website
 
-https://yourusername.github.io/INTERNSHIP/
+https://prashantmalagi.github.io/-Portfolio/
 
 ## Author
 
