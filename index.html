@@ -1,261 +1,1284 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prashanth Malagi - Java Developer and Web Developer Portfolio">
-  <meta name="author" content="Prashanth Malagi">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Prashanth Malagi – Full Stack Developer Portfolio. React, Node.js, Python." />
+  <meta name="author" content="Prashanth Malagi" />
+  <meta property="og:title" content="Prashanth Malagi | Portfolio" />
+  <meta property="og:description" content="Full Stack Developer Portfolio" />
   <title>Prashanth Malagi | Portfolio</title>
 
-  <!-- CSS File -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/dist/typed.umd.js" defer></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <header class="nav">
-    <div class="container nav-inner">
+  <!-- ─── CUSTOM CURSOR ──────────────────────────────────────── -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-      <a href="#home" class="brand">
-        <img src="profile.jpg.jpeg" alt="Prashanth Malagi"
-          style="width:36px;height:36px;border-radius:50%;object-fit:cover;">
-        <span>Prashanth Malagi</span>
+  <!-- ─── BACKGROUND CANVAS ────────────────────────────────── -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+  </div>
+
+  <!-- ─── NAVBAR ───────────────────────────────────────────── -->
+  <header class="nav" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-brand" aria-label="Home">
+        <img src="profile.jpg.jpeg" alt="Prashant Malagi" class="nav-avatar" />
+        <span class="nav-name">Prashanth<span class="accent">.</span></span>
       </a>
 
-      <div class="nav-cta">
-        <!-- Resume File Must Be In Same Folder -->
-        <a class="btn btn-outline" href="Prashant_Malagi_Resume.pdf" download>Resume</a>
-        <button class="theme-toggle" id="themeToggle">🌗</button>
-      </div>
+      <nav class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
+        <a href="#about"        class="nav-link" data-section="about">About</a>
+        <a href="#skills"       class="nav-link" data-section="skills">Skills</a>
+        <a href="#projects"     class="nav-link" data-section="projects">Projects</a>
+        <a href="#achievements" class="nav-link" data-section="achievements">Achievements</a>
+        <a href="#contact"      class="nav-link" data-section="contact">Contact</a>
+      </nav>
 
+      <div class="nav-actions">
+        <a href="Prashanth_Malagi_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <nav>
+      <a href="#about"        class="mobile-nav-link">About</a>
+      <a href="#skills"       class="mobile-nav-link">Skills</a>
+      <a href="#projects"     class="mobile-nav-link">Projects</a>
+      <a href="#achievements" class="mobile-nav-link">Achievements</a>
+      <a href="#contact"      class="mobile-nav-link">Contact</a>
+      <a href="Prashanth_Malagi_Resume.pdf" target="_blank" class="btn btn-primary mt-4">Download Resume</a>
+    </nav>
+  </div>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
   <section id="home" class="hero">
-    <div class="container">
-      <h1 class="title">Hi, I'm Prashanth 👋</h1>
-      <p class="subtitle">
-        Java Developer & Web Enthusiast. I build secure desktop apps,
-        database-driven systems, and modern responsive websites.
-      </p>
-      <div class="hero-cta">
-        <a class="btn" href="#projects">View My Work</a>
-        <a class="btn btn-outline" href="#contact">Contact Me</a>
-      </div>
-    </div>
-  </section>
+    <div class="hero-container">
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="reveal">
-    <div class="container">
-      <h2>About Me</h2>
-      <div class="card">
-        <p>
-          I am Prashanth Malagi, a passionate Information Science student and aspiring
-          software developer. I enjoy working with Java and web technologies to build
-          user-friendly and efficient applications. I am continuously learning and
-          improving my skills to grow as a full-stack developer
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section id="skills" class="reveal">
-    <div class="container">
-      <h2>Skills</h2>
-
-      <div class="skills">
-
-        <!-- Programming Languages -->
-        <div class="card">
-          <h3>Programming Languages</h3>
-
-          <h4>Java</h4>
-          <div class="bar"><span style="--percent:85%"></span></div>
-
-          <h4>JavaScript</h4>
-          <div class="bar"><span style="--percent:75%"></span></div>
-
-          <h4>Python</h4>
-          <div class="bar"><span style="--percent:60%"></span></div>
+      <!-- Left: Text -->
+      <div class="hero-left">
+        <div class="hero-badge" data-reveal>
+          <span class="badge-dot"></span>
+          Available for opportunities
         </div>
 
-        <!-- Web Development -->
-        <div class="card">
-          <h3>Web Development</h3>
+        <h1 class="hero-heading" data-reveal>
+          Hi, I'm<br />
+          <span class="hero-name gradient-text">Prashanth</span>
+        </h1>
 
-          <h4>HTML</h4>
-          <div class="bar"><span style="--percent:90%"></span></div>
+        <div class="hero-roles" data-reveal>
+          <span class="roles-prefix">I build&nbsp;</span>
+          <span class="typed-text" id="typed"></span>
+        </div>
 
-          <h4>CSS</h4>
-          <div class="bar"><span style="--percent:85%"></span></div>
+        <p class="hero-desc" data-reveal>
+          Information Science student passionate about building secure, scalable, and beautiful
+          applications with Node.js, React, Python, and modern web technologies.
+        </p>
 
-          <h4>React</h4>
-          <div class="bar"><span style="--percent:70%"></span></div>
+        <div class="hero-tech" data-reveal>
+          <span class="tech-pill"><i class="devicon-react-original colored"></i> React</span>
+          <span class="tech-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+          <span class="tech-pill"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="tech-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+        </div>
+
+        <div class="hero-cta" data-reveal>
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="Prashanth_Malagi_Resume.pdf" target="_blank" class="btn btn-outline">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
+          <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Profile Image -->
+      <div class="hero-right" data-reveal>
+        <div class="hero-image-wrapper" id="heroTilt">
+          <div class="hero-glow-ring"></div>
+          <img src="profile.jpg.jpeg" alt="Prashant Malagi profile" class="hero-avatar" loading="eager" />
+          <!-- Floating badges -->
+          <div class="float-badge float-badge-1">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="16 12 12 16 8 12" stroke="white" stroke-width="2" fill="none"/></svg>
+            Full Stack Dev
+          </div>
+          <div class="float-badge float-badge-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            6+ Projects
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-label" data-reveal>About Me</div>
+      <h2 class="section-heading" data-reveal>A Developer Who Loves <span class="gradient-text">Clean Code</span></h2>
+
+      <div class="about-grid">
+
+        <!-- Left: Image -->
+        <div class="about-image-col" data-reveal>
+          <div class="about-image-wrapper tilt-card">
+            <img src="profile.jpg.jpeg" alt="Prashant Malagi" class="about-img" loading="lazy" />
+            <div class="about-image-overlay"></div>
+          </div>
+          <div class="about-social">
+            <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/prashant-malagi-444221326" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+            </a>
+            <a href="mailto:prashantmalagi60@gmail.com" class="social-icon-btn" aria-label="Email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Info -->
+        <div class="about-info-col">
+          <p class="about-text" data-reveal>
+            I'm <strong>Prashanth Malagi</strong>, an Information Science &amp; Engineering student with a passion for building
+            user-friendly, scalable, and secure applications. From desktop systems to REST APIs and modern web apps, I enjoy
+            every part of the development cycle.
+          </p>
+
+          <!-- Education Card -->
+          <div class="info-card" data-reveal>
+            <div class="info-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div>
+              <div class="info-card-title">B.E. – Information Science &amp; Engineering</div>
+              <div class="info-card-sub">Currently pursuing · 6th Semester</div>
+            </div>
+          </div>
+
+          <!-- Goal Card -->
+          <div class="info-card" data-reveal>
+            <div class="info-card-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <div>
+              <div class="info-card-title">Career Objective</div>
+              <div class="info-card-sub">Seeking SWE internships &amp; placements in Full Stack / Backend / Web development</div>
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="about-stats" data-reveal>
+            <div class="stat-item">
+              <span class="stat-number counter-animate" data-target="6">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number counter-animate" data-target="8">0</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number counter-animate" data-target="3">0</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number counter-animate" data-target="2">0</span>
+              <span class="stat-label">Internships</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ────────────────────────────────────────────── -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-label" data-reveal>What I Know</div>
+      <h2 class="section-heading" data-reveal>Technical <span class="gradient-text">Skills</span></h2>
+      <p class="section-sub" data-reveal>Technologies and tools I use to design, build, and ship quality software.</p>
+
+      <div class="skills-grid">
+
+        <!-- Programming Languages -->
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Languages</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"><div class="skill-bar-fill"></div></div><span class="skill-pct">78%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-c-plain colored"></i><span>C</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="72"><div class="skill-bar-fill"></div></div><span class="skill-pct">72%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"><div class="skill-bar-fill"></div></div><span class="skill-pct">60%</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <h3>Frontend</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"><div class="skill-bar-fill"></div></div><span class="skill-pct">90%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"><div class="skill-bar-fill"></div></div><span class="skill-pct">85%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-react-original colored"></i><span>React</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Responsive Design</span>
+              </div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <h3>Backend</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-express-original colored"></i><span>Express.js</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"><div class="skill-bar-fill"></div></div><span class="skill-pct">75%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span>REST APIs</span>
+              </div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"><div class="skill-bar-fill"></div></div><span class="skill-pct">75%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-flask-original colored"></i><span>Flask</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
+            </li>
+          </ul>
         </div>
 
         <!-- Database -->
-        <div class="card">
-          <h3>Database</h3>
-
-          <h4>MySQL</h4>
-          <div class="bar"><span style="--percent:80%"></span></div>
-          <h4>Node.js</h4>
-          <div class="bar"><span style="--percent:80%"></span></div>
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3>Database</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                <span>SQLite</span>
+              </div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"><div class="skill-bar-fill"></div></div><span class="skill-pct">60%</span></div>
+            </li>
+          </ul>
         </div>
 
         <!-- Tools & Platforms -->
-        <div class="card">
-          <h3>Tools & Platforms</h3>
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Tools &amp; Platforms</h3>
+          </div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"><div class="skill-bar-fill"></div></div><span class="skill-pct">90%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
+            </li>
+            <li class="skill-item">
+              <div class="skill-item-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span>Power BI / Excel</span>
+              </div>
+              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
+            </li>
+          </ul>
+        </div>
 
-          <h4>Git</h4>
-          <div class="bar"><span style="--percent:75%"></span></div>
-
-          <h4>GitHub</h4>
-          <div class="bar"><span style="--percent:80%"></span></div>
+        <!-- Core CS -->
+        <div class="skill-card tilt-card" data-reveal>
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <h3>Core CS</h3>
+          </div>
+          <ul class="skill-list skill-list-tags">
+            <li class="tag-pill">Data Structures &amp; Algorithms</li>
+            <li class="tag-pill">Object-Oriented Programming</li>
+            <li class="tag-pill">DBMS</li>
+            <li class="tag-pill">Computer Networks</li>
+            <li class="tag-pill">Operating Systems</li>
+            <li class="tag-pill">Software Engineering</li>
+          </ul>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="reveal">
+  <!-- ─── PROJECTS ──────────────────────────────────────────── -->
+  <section id="projects" class="section">
     <div class="container">
-      <h2>Projects</h2>
+      <div class="section-label" data-reveal>What I've Built</div>
+      <h2 class="section-heading" data-reveal>Featured <span class="gradient-text">Projects</span></h2>
+      <p class="section-sub" data-reveal>A selection of projects that showcase my skills and growth as a developer.</p>
 
-      <div class="projects">
+      <div class="projects-list">
+        <!-- Featured Project: Instagram Recommender System -->
+        <article class="project-item project-item-featured" data-reveal>
+          <div class="project-image-container tilt-card">
+            <img src="recommender-dashboard.png" alt="Instagram Recommender System Dashboard" class="project-image" />
+            <div class="project-image-overlay"></div>
+          </div>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-featured-badge">Featured Project</span>
+              <div class="project-badges">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">FastAPI</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">Python</span>
+              </div>
+            </div>
+            <h3 class="project-title">Instagram Recommender System</h3>
+            <p class="project-desc">
+              A scalable social media platform featuring a custom-built Hybrid Recommendation Engine. It delivers personalized content feeds by scoring users against trending metrics, social graphs, content topics, and collaborative filtering, all served through a lightning-fast FastAPI microservice architecture.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/instagram-recommender-system" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View Repository
+              </a>
+            </div>
+          </div>
+        </article>
 
-        <div class="card project">
-          <h3>Portfolio Website</h3>
-          <p>Responsive personal portfolio built using HTML, CSS and JavaScript.</p>
-          <a href="https://github.com/prashantmalagi/FUTURE_FS_TaskNumber1" target="_blank" class="btn btn-outline">Source Code</a>
-        </div>
 
-        <div class="card project">
-          <h3>Student Records API</h3>
-          <p>REST API built using Java Servlets and PostgreSQL.</p>
-          <a href="https://github.com/YOUR_USERNAME/student-api" target="_blank" class="btn btn-outline">Source Code</a>
-        </div>
+        <!-- Project 1 – Portfolio Website -->
+        <article class="project-item" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">01</span>
+              <div class="project-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">GSAP</span>
+              </div>
+            </div>
+            <h3 class="project-title">Portfolio Website</h3>
+            <p class="project-desc">
+              A premium, fully responsive personal portfolio built from scratch using vanilla HTML, CSS, and JavaScript.
+              Features glassmorphism design, GSAP animations, 3D tilt effects, and a custom cursor system.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/FUTURE_FS_TaskNumber1" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+              <a href="#" class="btn btn-ghost btn-sm" aria-label="Live demo coming soon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Live Demo
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                <span>Portfolio Website</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="card project">
-          <h3>Mini CRM</h3>
-          <p>This project is built using HTML, CSS, JavaScript for frontend and Node.js, Express.js, MongoDB with JWT authentication for backend.</p>
-          <a href="https://github.com/prashantmalagi/FUTURE_FS_TaskNumber2" target="_blank" class="btn btn-outline">Source Code</a> </div>
-        
-        <div class="card project">
-          <h3>Krishi Mitra</h3>
-          <p>Krishi Mitra is built using Python & Flask backend with SQLite database, Google Gemini (via OpenRouter) AI, gTTS voice, smtplib email verification, and a frontend using Jinja2, Tailwind CSS, Bootstrap, and Vanilla JavaScript.</p>
-          <a href="https://github.com/prathambalehosurr/UB-1051" target="_blank" class="btn btn-outline">Source Code</a>
-        </div>
+        <!-- Project 2 – Student Records API -->
+        <article class="project-item project-item-reverse" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">02</span>
+              <div class="project-badges">
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Express</span>
+                <span class="tech-badge">PostgreSQL</span>
+                <span class="tech-badge">REST API</span>
+              </div>
+            </div>
+            <h3 class="project-title">Student Records API</h3>
+            <p class="project-desc">
+              A robust REST API built using Node.js, Express, and PostgreSQL for managing student records.
+              Supports full CRUD operations, authentication, and efficient database queries.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/student-api" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                <span>Student Records API</span>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        <div class="card project">
-          <h3>Vault</h3>
-          <p>Digital Banking System built using HTML, CSS, JavaScript (Frontend) and Node.js REST API (Backend).</p>
-          <a href="https://github.com/prashantmalagi/Vault" target="_blank" class="btn btn-outline">Source Code</a>
-        </div>
+        <!-- Project 3 – Mini CRM -->
+        <article class="project-item" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">03</span>
+              <div class="project-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">Express</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">JWT</span>
+              </div>
+            </div>
+            <h3 class="project-title">Mini CRM</h3>
+            <p class="project-desc">
+              A full-stack Customer Relationship Management system with JWT authentication. Frontend built
+              with HTML, CSS, and JavaScript; backend powered by Node.js, Express.js, and MongoDB.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/FUTURE_FS_TaskNumber2" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Mini CRM</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 – Krishi Mitra -->
+        <article class="project-item project-item-reverse" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">04</span>
+              <div class="project-badges">
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Flask</span>
+                <span class="tech-badge">SQLite</span>
+                <span class="tech-badge">Gemini AI</span>
+                <span class="tech-badge">Tailwind</span>
+              </div>
+            </div>
+            <h3 class="project-title">Krishi Mitra</h3>
+            <p class="project-desc">
+              An AI-powered agricultural assistant built with Python &amp; Flask. Integrates Google Gemini AI via OpenRouter,
+              text-to-speech (gTTS), email verification (smtplib), and a modern UI with Jinja2, Tailwind CSS, and Bootstrap.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prathambalehosurr/UB-1051" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+                <span>Krishi Mitra</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 – Gym Management System -->
+        <article class="project-item" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">05</span>
+              <div class="project-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+              </div>
+            </div>
+            <h3 class="project-title">Gym Management System</h3>
+            <p class="project-desc">
+              A modern, responsive gym website created to promote a local fitness business. Features a clean
+              design with membership plans, trainer profiles, and a contact section.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/FUTURE_FS_TaskNumber3" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                <span>Gym Management</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 – Vault -->
+        <article class="project-item project-item-reverse" data-reveal>
+          <div class="project-content">
+            <div class="project-meta">
+              <span class="project-num">06</span>
+              <div class="project-badges">
+                <span class="tech-badge">HTML</span>
+                <span class="tech-badge">CSS</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">REST API</span>
+              </div>
+            </div>
+            <h3 class="project-title">Vault – Digital Banking</h3>
+            <p class="project-desc">
+              A digital banking web application with a clean frontend and a Node.js REST API backend.
+              Supports account management, transactions, and secure data operations.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/prashantmalagi/Vault" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
+              </a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-image-wrap tilt-card">
+              <div class="project-image-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Vault Banking</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="reveal">
+  <!-- ─── ACHIEVEMENTS ─────────────────────────────────────── -->
+  <section id="achievements" class="section section-alt">
     <div class="container">
-      <h2>Contact Me</h2>
+      <div class="section-label" data-reveal>Milestones</div>
+      <h2 class="section-heading" data-reveal><span class="gradient-text">Achievements</span> &amp; Experience</h2>
 
-      <div class="contact-wrapper">
+      <div class="timeline">
 
-        <!-- LEFT BOX : CONTACT FORM -->
-        <div class="card contact-box">
-          <h3>Send Me a Message</h3>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2025</div>
+            <h3 class="timeline-title">Full Stack Developer Internship</h3>
+            <p class="timeline-desc">Completed hands-on internship building full-stack web applications. Worked with HTML, CSS, JavaScript, Node.js, and REST APIs to deliver real-world features.</p>
+            <div class="timeline-tags">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">Node.js</span>
+              <span class="tech-badge">REST API</span>
+            </div>
+          </div>
+        </div>
 
-          <form action="https://formspree.io/f/mldwzjey" method="POST" class="contact-form">
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2025</div>
+            <h3 class="timeline-title">AI-Powered App – Krishi Mitra</h3>
+            <p class="timeline-desc">Co-built an AI agricultural assistant integrating Google Gemini API, voice output, and email verification — submitted as a team project.</p>
+            <div class="timeline-tags">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Flask</span>
+              <span class="tech-badge">Gemini AI</span>
+            </div>
+          </div>
+        </div>
 
-            <input type="text" name="name" placeholder="Your Name" required>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2024</div>
+            <h3 class="timeline-title">B.E. Information Science – Ongoing</h3>
+            <p class="timeline-desc">Currently in the 6th semester, focusing on software engineering, database systems, computer networks, and full-stack development.</p>
+            <div class="timeline-tags">
+              <span class="tech-badge">ISE</span>
+              <span class="tech-badge">6th Semester</span>
+            </div>
+          </div>
+        </div>
 
-            <input type="email" name="email" placeholder="Your Email" required>
+        <div class="timeline-item" data-reveal>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2023</div>
+            <h3 class="timeline-title">Started Web &amp; Full Stack Development Journey</h3>
+            <p class="timeline-desc">Began building core skills in data structures, OOP, and web fundamentals. Built first projects including a portfolio website and student records system.</p>
+            <div class="timeline-tags">
+              <span class="tech-badge">HTML/CSS</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Python</span>
+            </div>
+          </div>
+        </div>
 
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      </div>
+    </div>
+  </section>
 
-            <button type="submit" class="btn">Send Message</button>
+  <!-- ─── GITHUB STATS ─────────────────────────────────────── -->
+  <section id="github" class="section">
+    <div class="container">
+      <div class="section-label" data-reveal>Open Source</div>
+      <h2 class="section-heading" data-reveal>GitHub <span class="gradient-text">Activity</span></h2>
+      <p class="section-sub" data-reveal>A snapshot of my open-source contributions and coding activity.</p>
 
+      <div class="github-grid" data-reveal>
+
+        <!-- GitHub Stats Card -->
+        <div class="github-card tilt-card" id="ghStatsCard">
+          <div class="gh-loading"><div class="gh-spinner"></div></div>
+          <img id="ghStatsImg"
+            data-src="https://github-readme-stats.vercel.app/api?username=prashantmalagi&show_icons=true&theme=transparent&hide_border=true&title_color=8B5CF6&text_color=e2e8f0&icon_color=6366F1&bg_color=00000000&count_private=true&cache_seconds=1800"
+            data-fallbacks='["https://github-readme-stats.vercel.app/api?username=prashantmalagi&show_icons=true&hide_border=true&title_color=8B5CF6&text_color=e2e8f0&icon_color=6366F1&bg_color=0d1117&count_private=true","https://github-profile-summary-cards.vercel.app/api/cards/stats?username=prashantmalagi&theme=transparent"]'
+            alt="Prashant GitHub Stats" class="github-img" style="display:none" />
+          <div class="gh-placeholder" id="ghStatsPlaceholder" style="display:none">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <span class="gh-placeholder-title">GitHub Stats</span>
+            <span class="gh-placeholder-sub">GitHub statistics are temporarily unavailable.</span>
+            <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="gh-placeholder-link">View on GitHub ↗</a>
+          </div>
+        </div>
+
+        <!-- Top Languages Card -->
+        <div class="github-card tilt-card" id="ghLangsCard">
+          <div class="gh-loading"><div class="gh-spinner"></div></div>
+          <img id="ghLangsImg"
+            data-src="https://github-readme-stats.vercel.app/api/top-langs/?username=prashantmalagi&layout=compact&theme=transparent&hide_border=true&title_color=8B5CF6&text_color=e2e8f0&bg_color=00000000&langs_count=8&cache_seconds=1800"
+            data-fallbacks='["https://github-readme-stats.vercel.app/api/top-langs/?username=prashantmalagi&layout=compact&hide_border=true&title_color=8B5CF6&text_color=e2e8f0&bg_color=0d1117&langs_count=8","https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=prashantmalagi&theme=transparent"]'
+            alt="Prashant Top Languages" class="github-img" style="display:none" />
+          <div class="gh-placeholder" id="ghLangsPlaceholder" style="display:none">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span class="gh-placeholder-title">Top Languages</span>
+            <span class="gh-placeholder-sub">GitHub statistics are temporarily unavailable.</span>
+            <a href="https://github.com/prashantmalagi?tab=repositories" target="_blank" rel="noopener noreferrer" class="gh-placeholder-link">View Repos ↗</a>
+          </div>
+        </div>
+
+        <!-- Streak Card (full width) -->
+        <div class="github-card github-streak-card tilt-card" id="ghStreakCard">
+          <div class="gh-loading"><div class="gh-spinner"></div></div>
+          <img id="ghStreakImg"
+            data-src="https://streak-stats.demolab.com?user=prashantmalagi&theme=transparent&hide_border=true&ring=8B5CF6&fire=6366F1&currStreakLabel=6366F1&sideLabels=e2e8f0&dates=94a3b8&stroke=0B1120&background=00000000"
+            data-fallbacks='["https://github-readme-streak-stats.herokuapp.com/?user=prashantmalagi&theme=transparent&hide_border=true&ring=8B5CF6&fire=6366F1&currStreakLabel=6366F1","https://github-readme-activity-graph.vercel.app/graph?username=prashantmalagi&theme=react-dark&hide_border=true&bg_color=00000000&color=8B5CF6&line=6366F1&point=3B82F6"]'
+            alt="Prashant GitHub Streak" class="github-img" style="display:none" />
+          <div class="gh-placeholder" id="ghStreakPlaceholder" style="display:none">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <span class="gh-placeholder-title">Contribution Activity</span>
+            <span class="gh-placeholder-sub">GitHub statistics are temporarily unavailable.</span>
+            <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="gh-placeholder-link">View Contributions ↗</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="github-cta" data-reveal>
+        <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          View GitHub Profile
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── CONTACT ───────────────────────────────────────────── -->
+  <section id="contact" class="section section-alt">
+    <div class="container">
+      <div class="section-label" data-reveal>Get In Touch</div>
+      <h2 class="section-heading" data-reveal>Let's <span class="gradient-text">Work Together</span></h2>
+      <p class="section-sub" data-reveal>
+        Whether it's a job opportunity, freelance project, or just a hello — my inbox is always open.
+      </p>
+
+      <div class="contact-grid">
+
+        <!-- Form -->
+        <div class="contact-form-wrap glass-card" data-reveal>
+          <h3 class="contact-form-title">Send a Message</h3>
+          <form action="https://formspree.io/f/mldwzjey" method="POST" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contactName" class="form-label">Your Name</label>
+              <input id="contactName" type="text" name="name" class="form-input" placeholder="Prashanth Malagi" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail" class="form-label">Email Address</label>
+              <input id="contactEmail" type="email" name="email" class="form-input" placeholder="hello@example.com" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label for="contactMsg" class="form-label">Message</label>
+              <textarea id="contactMsg" name="message" class="form-input form-textarea" placeholder="Tell me about your project or opportunity..." rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-glow btn-full" id="submitBtn">
+              Send Message
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
           </form>
         </div>
 
-        <!-- RIGHT BOX : CONNECT -->
-        <div class="card contact-box">
-          <h3>Connect With Me</h3>
+        <!-- Social Links -->
+        <div class="contact-info-wrap" data-reveal>
+          <h3 class="contact-info-title">Connect With Me</h3>
+          <p class="contact-info-desc">Prefer a direct chat? Reach out on any of these platforms.</p>
 
-          <ul class="social-links">
-            <li>📧 <a href="mailto:prashantmalagi60@gmail.com">Email</a></li>
-            <li>💼 <a href="https://www.linkedin.com/in/prashant-malagi-444221326" target="_blank">LinkedIn</a></li>
-            <li>📸 <a href="https://www.instagram.com/prashant.malagi/" target="_blank">Instagram</a></li>
-            <li>💻 <a href="https://github.com/prashantmalagi" target="_blank">GitHub</a></li>
-          </ul>
+          <div class="contact-social-list">
+            <a href="mailto:prashantmalagi60@gmail.com" class="contact-social-item">
+              <div class="csocial-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="csocial-label">Email</div>
+                <div class="csocial-value">prashantmalagi60@gmail.com</div>
+              </div>
+              <svg class="csocial-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
 
+            <a href="https://www.linkedin.com/in/prashant-malagi-444221326" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <div class="csocial-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+              </div>
+              <div>
+                <div class="csocial-label">LinkedIn</div>
+                <div class="csocial-value">prashant-malagi-444221326</div>
+              </div>
+              <svg class="csocial-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <div class="csocial-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              </div>
+              <div>
+                <div class="csocial-label">GitHub</div>
+                <div class="csocial-value">github.com/prashantmalagi</div>
+              </div>
+              <svg class="csocial-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com/prashant.malagi/" target="_blank" rel="noopener noreferrer" class="contact-social-item">
+              <div class="csocial-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div>
+                <div class="csocial-label">Instagram</div>
+                <div class="csocial-value">prashant.malagi</div>
+              </div>
+              <svg class="csocial-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="footer">
     <div class="container">
-      © <span id="year"></span> Prashanth Malagi
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="footer-name">Prashanth<span class="accent">.</span></span>
+          <p class="footer-tagline">Building the web, one commit at a time.</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#about" class="footer-link">About</a>
+          <a href="#skills" class="footer-link">Skills</a>
+          <a href="#projects" class="footer-link">Projects</a>
+          <a href="#contact" class="footer-link">Contact</a>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://github.com/prashantmalagi" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/prashant-malagi-444221326" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
+          </a>
+          <a href="mailto:prashantmalagi60@gmail.com" aria-label="Email" class="footer-social-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Prashanth Malagi. All rights reserved.</p>
+        <button class="back-to-top" id="backToTop" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+        </button>
+      </div>
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT ===== -->
+  <!-- ─── SCRIPTS ───────────────────────────────────────────── -->
   <script>
-    // Theme Toggle
-    const toggle = document.getElementById("themeToggle");
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("light");
+    // ── Year ──────────────────────────────────────────────────
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Custom cursor ─────────────────────────────────────────
+    (function(){
+      const dot  = document.getElementById('cursorDot');
+      const ring = document.getElementById('cursorRing');
+      let mx = -100, my = -100, rx = -100, ry = -100;
+      const isTouchDevice = window.matchMedia('(hover: none)').matches;
+      if (isTouchDevice) { dot.style.display = 'none'; ring.style.display = 'none'; return; }
+
+      document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+      function animCursor() {
+        dot.style.transform  = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+        requestAnimationFrame(animCursor);
+      }
+      animCursor();
+
+      const hoverEls = document.querySelectorAll('a, button, [data-tilt], .tilt-card, .skill-card, .project-image-wrap');
+      hoverEls.forEach(el => {
+        el.addEventListener('mouseenter', () => { ring.classList.add('cursor-hover'); dot.classList.add('cursor-hover'); });
+        el.addEventListener('mouseleave', () => { ring.classList.remove('cursor-hover'); dot.classList.remove('cursor-hover'); });
+      });
+
+      document.addEventListener('mousedown', e => {
+        const r = document.createElement('div');
+        Object.assign(r.style, { position:'fixed', borderRadius:'50%', width:'8px', height:'8px',
+          background:'rgba(139,92,246,0.6)', pointerEvents:'none', zIndex:'9998',
+          left: e.clientX - 4 + 'px', top: e.clientY - 4 + 'px',
+          transition:'transform 0.6s ease, opacity 0.6s ease' });
+        document.body.appendChild(r);
+        requestAnimationFrame(() => { r.style.transform = 'scale(10)'; r.style.opacity = '0'; });
+        setTimeout(() => r.remove(), 650);
+      });
+    })();
+
+    // ── Particle canvas ───────────────────────────────────────
+    (function(){
+      const canvas = document.getElementById('particleCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H, particles = [];
+      const N = 60;
+
+      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function rnd(min, max) { return Math.random() * (max - min) + min; }
+      for (let i = 0; i < N; i++) {
+        particles.push({ x: rnd(0,W), y: rnd(0,H), r: rnd(0.5,1.8), vx: rnd(-0.2,0.2), vy: rnd(-0.2,0.2),
+          alpha: rnd(0.1,0.4), color: Math.random() > 0.5 ? '139,92,246' : '99,102,241' });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // ── Navbar hide on scroll down / show on scroll up ────────
+    (function(){
+      const nav = document.getElementById('navbar');
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 80) { nav.classList.add('nav-scrolled'); }
+        else { nav.classList.remove('nav-scrolled'); }
+        if (y > lastY && y > 120) { nav.classList.add('nav-hidden'); }
+        else { nav.classList.remove('nav-hidden'); }
+        lastY = y;
+      }, { passive: true });
+    })();
+
+    // ── Active nav link highlight ─────────────────────────────
+    (function(){
+      const links    = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('section[id]');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            links.forEach(l => l.classList.remove('active'));
+            const active = document.querySelector(`.nav-link[data-section="${e.target.id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      sections.forEach(s => obs.observe(s));
+    })();
+
+    // ── Mobile hamburger ──────────────────────────────────────
+    (function(){
+      const hamburger  = document.getElementById('hamburger');
+      const mobileNav  = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileClose');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function openMenu() {
+        mobileNav.classList.add('open');
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      hamburger.addEventListener('click', () => mobileNav.classList.contains('open') ? closeMenu() : openMenu());
+      mobileClose.addEventListener('click', closeMenu);
+      mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
+    })();
+
+    // ── Scroll reveal ─────────────────────────────────────────
+    (function(){
+      const els = document.querySelectorAll('[data-reveal]');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('revealed'), e.target.dataset.delay || 0);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      els.forEach((el, i) => { el.dataset.delay = i % 4 * 80; obs.observe(el); });
+    })();
+
+    // ── Skill bar animation ───────────────────────────────────
+    (function(){
+      const bars = document.querySelectorAll('.skill-bar');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const w = e.target.dataset.width;
+            e.target.querySelector('.skill-bar-fill').style.width = w + '%';
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      bars.forEach(b => obs.observe(b));
+    })();
+
+    // ── Counter animation ─────────────────────────────────────
+    (function(){
+      const counters = document.querySelectorAll('.counter-animate');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const target = +e.target.dataset.target;
+            const dur = 1400;
+            const start = performance.now();
+            const step = now => {
+              const p = Math.min((now - start) / dur, 1);
+              e.target.textContent = Math.floor(p * target);
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(c => obs.observe(c));
+    })();
+
+    // ── Tilt effect on cards ──────────────────────────────────
+    (function(){
+      const cards = document.querySelectorAll('.tilt-card');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) return;
+      cards.forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width  - 0.5;
+          const y = (e.clientY - rect.top)  / rect.height - 0.5;
+          card.style.transform = `perspective(800px) rotateX(${-y * 10}deg) rotateY(${x * 10}deg) translateZ(4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform 0.5s ease';
+          card.style.transform  = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+          setTimeout(() => card.style.transition = '', 500);
+        });
+      });
+    })();
+
+    // ── Hero image 3D tilt ────────────────────────────────────
+    (function(){
+      const el = document.getElementById('heroTilt');
+      if (!el) return;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reducedMotion) return;
+      document.addEventListener('mousemove', e => {
+        const cx = window.innerWidth  / 2;
+        const cy = window.innerHeight / 2;
+        const x  = (e.clientX - cx) / cx * 8;
+        const y  = (e.clientY - cy) / cy * 8;
+        el.style.transform = `perspective(800px) rotateX(${-y}deg) rotateY(${x}deg)`;
+      });
+    })();
+
+    // ── Back to top button ────────────────────────────────────
+    (function(){
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // ── Typed.js ──────────────────────────────────────────────
+
+    // ── GitHub Stats Image Loader ─────────────────────────────
+    // Tries each URL in sequence; if all fail shows a styled placeholder.
+    (function() {
+      const configs = [
+        { imgId: 'ghStatsImg',  placeholderId: 'ghStatsPlaceholder',  cardId: 'ghStatsCard'  },
+        { imgId: 'ghLangsImg',  placeholderId: 'ghLangsPlaceholder',  cardId: 'ghLangsCard'  },
+        { imgId: 'ghStreakImg', placeholderId: 'ghStreakPlaceholder', cardId: 'ghStreakCard' },
+      ];
+
+      function tryLoad(imgEl, urls, index, placeholderEl, cardEl) {
+        if (index >= urls.length) {
+          var loader = cardEl.querySelector('.gh-loading');
+          if (loader) loader.style.display = 'none';
+          placeholderEl.style.display = 'flex';
+          return;
+        }
+        var url = urls[index];
+        var probe = new Image();
+        var timer = setTimeout(function() {
+          probe.onload = probe.onerror = null;
+          tryLoad(imgEl, urls, index + 1, placeholderEl, cardEl);
+        }, 8000);
+        probe.onload = function() {
+          clearTimeout(timer);
+          imgEl.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_t=' + Date.now();
+          imgEl.style.display = 'block';
+          var loader = cardEl.querySelector('.gh-loading');
+          if (loader) loader.style.display = 'none';
+        };
+        probe.onerror = function() {
+          clearTimeout(timer);
+          tryLoad(imgEl, urls, index + 1, placeholderEl, cardEl);
+        };
+        probe.src = url;
+      }
+
+      var section = document.getElementById('github');
+      if (!section) return;
+
+      var ghObs = new IntersectionObserver(function(entries) {
+        if (!entries[0].isIntersecting) return;
+        ghObs.disconnect();
+        configs.forEach(function(cfg) {
+          var imgEl  = document.getElementById(cfg.imgId);
+          var phEl   = document.getElementById(cfg.placeholderId);
+          var cardEl = document.getElementById(cfg.cardId);
+          if (!imgEl || !phEl || !cardEl) return;
+          var primary = imgEl.getAttribute('data-src') || '';
+          var fallbacks = [];
+          try { fallbacks = JSON.parse(imgEl.getAttribute('data-fallbacks') || '[]'); } catch(e) {}
+          tryLoad(imgEl, [primary].concat(fallbacks).filter(Boolean), 0, phEl, cardEl);
+        });
+      }, { threshold: 0.1 });
+
+      ghObs.observe(section);
+    })();
+    window.addEventListener('load', () => {
+      if (typeof Typed !== 'undefined') {
+        new Typed('#typed', {
+          strings: ['web applications.', 'REST APIs.', 'scalable backends.', 'beautiful UIs.', 'full stack apps.'],
+          typeSpeed: 55,
+          backSpeed: 35,
+          backDelay: 1800,
+          loop: true,
+          cursorChar: '|',
+        });
+      }
     });
 
-    // Dynamic Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Reveal On Scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-          observer.unobserve(entry.target);
-        }
+    // ── Mouse spotlight on hero ───────────────────────────────
+    (function(){
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        hero.style.setProperty('--my', (e.clientY - r.top)  + 'px');
       });
-    }, observerOptions);
+    })();
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    // ── GSAP Scroll Animations (deferred) ────────────────────
+    window.addEventListener('load', () => {
+      if (typeof gsap === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
 
-    // Navbar background change on scroll
-    const nav = document.querySelector(".nav");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        nav.style.background = "var(--panel)";
-        nav.style.boxShadow = "var(--shadow)";
-      } else {
-        nav.style.background = "linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0))";
-        nav.style.boxShadow = "none";
+      // Section headings
+      gsap.utils.toArray('.section-heading').forEach(el => {
+        gsap.fromTo(el, { opacity: 0, y: 40 }, {
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' }
+        });
+      });
+
+      // Timeline stagger
+      gsap.utils.toArray('.timeline-item').forEach((el, i) => {
+        gsap.fromTo(el, { opacity: 0, x: -30 }, {
+          opacity: 1, x: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 85%' }
+        });
+      });
+
+      // Hero text words animation
+      const heroHeading = document.querySelector('.hero-heading');
+      if (heroHeading) {
+        gsap.fromTo(heroHeading, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
       }
     });
   </script>
-
 </body>
-
 </html>
