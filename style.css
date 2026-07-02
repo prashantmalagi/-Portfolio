@@ -1618,7 +1618,7 @@ body {
 
 @media (max-width: 768px) {
   /* Navigation */
-  .nav-links, .nav-actions { display: none !important; }
+  .nav-links, .nav-actions .btn { display: none !important; }
   .hamburger { display: flex !important; }
   .mobile-nav nav {
     display: flex;
@@ -1638,13 +1638,16 @@ body {
 
   /* Hero Section */
   .hero {
+    display: block;
+    overflow: visible;
     min-height: auto;
+    padding-top: calc(var(--nav-h) + var(--sp-8));
     padding-bottom: var(--sp-12);
   }
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: calc(var(--nav-h) + var(--sp-4));
+    padding-top: 0;
     gap: var(--sp-8);
   }
   .hero-left {
