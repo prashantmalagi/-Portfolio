@@ -1605,3 +1605,183 @@ body > *:not(.bg-layer) { position: relative; z-index: 1; }
   background: linear-gradient(to top, rgba(11,17,32,0.8) 0%, transparent 100%);
   pointer-events: none;
 }
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVENESS OVERHAUL (max-width: 768px)
+   ========================================================================== */
+
+/* Global Mobile Fixes */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Navigation */
+  .nav-links, .nav-actions { display: none !important; }
+  .hamburger { display: flex !important; }
+  .mobile-nav nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-6);
+  }
+
+  /* Container adjustments */
+  .container {
+    padding-inline: var(--sp-4);
+  }
+  .section {
+    padding-block: var(--sp-12);
+  }
+
+  /* Hero Section */
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: calc(var(--nav-h) + var(--sp-4));
+    gap: var(--sp-8);
+  }
+  .hero-left {
+    align-items: center;
+  }
+  .hero-heading {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
+  .hero-sub {
+    font-size: var(--text-base);
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-image-wrapper {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+
+  /* About Section */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-8);
+    text-align: center;
+  }
+  .about-image-col {
+    order: -1; /* Stack image above text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-image-wrapper {
+    width: 240px !important;
+    height: 260px !important;
+  }
+  .about-social {
+    justify-content: center;
+    width: 100%;
+  }
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  /* Skills Section */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .skill-category {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Projects Section */
+  .project-item, .project-item-featured {
+    grid-template-columns: 1fr !important;
+    direction: ltr !important;
+    padding: var(--sp-5);
+    gap: var(--sp-6);
+  }
+  .project-image-container {
+    order: -1;
+    min-height: 200px;
+  }
+  .project-item-reverse > * {
+    direction: ltr;
+  }
+  .project-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  .project-links .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* GitHub Section */
+  .github-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--sp-6);
+  }
+  .github-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--sp-4);
+  }
+  .github-card img.github-img {
+    max-width: 100%;
+    height: auto;
+  }
+  .github-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Contact Section */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+  .contact-info {
+    text-align: center;
+    align-items: center;
+  }
+  .contact-social {
+    justify-content: center;
+  }
+  .contact-form-wrap {
+    padding: var(--sp-5);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .form-group input, 
+  .form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .contact-form .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--sp-6);
+  }
+  .footer-social {
+    justify-content: center;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+}
