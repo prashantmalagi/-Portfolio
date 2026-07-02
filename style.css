@@ -1611,9 +1611,9 @@ body > *:not(.bg-layer) { position: relative; z-index: 1; }
    ========================================================================== */
 
 /* Global Mobile Fixes */
-html, body {
+body {
   overflow-x: hidden;
-  width: 100%;
+  max-width: 100vw;
 }
 
 @media (max-width: 768px) {
@@ -1637,6 +1637,10 @@ html, body {
   }
 
   /* Hero Section */
+  .hero {
+    min-height: auto;
+    padding-bottom: var(--sp-12);
+  }
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
