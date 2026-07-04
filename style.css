@@ -1653,18 +1653,25 @@ html, body {
   .hero {
     display: flex !important;
     flex-direction: column;
+    align-items: flex-start !important;
     min-height: 0 !important;
     height: auto !important;
-    padding-top: calc(var(--nav-h) + var(--sp-4)) !important;
-    padding-bottom: var(--sp-10) !important;
+    /* Only clear the navbar — no extra top padding */
+    padding-top: var(--nav-h) !important;
+    padding-bottom: var(--sp-8) !important;
   }
   .hero-container {
     display: flex !important;
     flex-direction: column;
     grid-template-columns: 1fr;
     text-align: center;
-    padding-top: 0;
-    gap: var(--sp-6);
+    align-items: center;
+    width: 100%;
+    /* padding-top from the 900px tablet query is calc(nav-h + sp-8) = 100px.
+       Defeat it explicitly with both logical and physical overrides. */
+    padding-block: var(--sp-4) var(--sp-4) !important;
+    padding-top: var(--sp-4) !important;
+    gap: var(--sp-5);
   }
   .hero-left {
     align-items: center;
