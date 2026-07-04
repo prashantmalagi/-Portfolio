@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive, and interactive developer portfolio showcasing my projects, skills, experience, and achievements. Built with a futuristic UI, smooth animations, and a focus on creating a premium user experience.",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantmalagi/-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/prashantmalagi/-Portfolio/issues"
+  },
+  "homepage": "https://github.com/prashantmalagi/-Portfolio#readme"
+}
