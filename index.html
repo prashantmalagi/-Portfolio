@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -16,6 +16,49 @@
 
   <!-- Devicons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+
+  <!-- Tailwind CSS & React (For Skills Redesign) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      corePlugins: {
+        preflight: false,
+      },
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0B1120',
+              card: '#131C31',
+              accent: '#8B5CF6',
+              accentLight: '#A78BFA',
+              pink: '#EC4899',
+              cyan: '#06B6D4',
+              border: 'rgba(255, 255, 255, 0.08)'
+            }
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 4s infinite ease-in-out',
+            'float-slow': 'floatSlow 6s infinite ease-in-out',
+          },
+          keyframes: {
+            glowPulse: {
+              '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+              '50%': { opacity: '0.6', transform: 'scale(1.05)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -240,196 +283,8 @@
     </div>
   </section>
 
-  <!-- ─── SKILLS ────────────────────────────────────────────── -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <div class="section-label" data-reveal>What I Know</div>
-      <h2 class="section-heading" data-reveal>Technical <span class="gradient-text">Skills</span></h2>
-      <p class="section-sub" data-reveal>Technologies and tools I use to design, build, and ship quality software.</p>
-
-      <div class="skills-grid">
-
-        <!-- Programming Languages -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <h3>Languages</h3>
-          </div>
-          <ul class="skill-list">
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"><div class="skill-bar-fill"></div></div><span class="skill-pct">78%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-c-plain colored"></i><span>C</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="72"><div class="skill-bar-fill"></div></div><span class="skill-pct">72%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"><div class="skill-bar-fill"></div></div><span class="skill-pct">60%</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Frontend -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-            </div>
-            <h3>Frontend</h3>
-          </div>
-          <ul class="skill-list">
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"><div class="skill-bar-fill"></div></div><span class="skill-pct">90%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"><div class="skill-bar-fill"></div></div><span class="skill-pct">85%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-react-original colored"></i><span>React</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-tailwindcss-plain colored"></i><span>Tailwind CSS</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                <span>Responsive Design</span>
-              </div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            </div>
-            <h3>Backend</h3>
-          </div>
-          <ul class="skill-list">
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-express-original colored"></i><span>Express.js</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"><div class="skill-bar-fill"></div></div><span class="skill-pct">75%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                <span>REST APIs</span>
-              </div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"><div class="skill-bar-fill"></div></div><span class="skill-pct">75%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-flask-original colored"></i><span>Flask</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Database -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-            </div>
-            <h3>Database</h3>
-          </div>
-          <ul class="skill-list">
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="65"><div class="skill-bar-fill"></div></div><span class="skill-pct">65%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                <span>SQLite</span>
-              </div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="60"><div class="skill-bar-fill"></div></div><span class="skill-pct">60%</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Tools & Platforms -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <h3>Tools &amp; Platforms</h3>
-          </div>
-          <ul class="skill-list">
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-github-original colored"></i><span>GitHub</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="80"><div class="skill-bar-fill"></div></div><span class="skill-pct">80%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-vscode-plain colored"></i><span>VS Code</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"><div class="skill-bar-fill"></div></div><span class="skill-pct">90%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info"><i class="devicon-vitejs-plain colored"></i><span>Vite</span></div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
-            </li>
-            <li class="skill-item">
-              <div class="skill-item-info">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                <span>Power BI / Excel</span>
-              </div>
-              <div class="skill-bar-wrap"><div class="skill-bar" data-width="70"><div class="skill-bar-fill"></div></div><span class="skill-pct">70%</span></div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Core CS -->
-        <div class="skill-card tilt-card" data-reveal>
-          <div class="skill-card-header">
-            <div class="skill-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-            </div>
-            <h3>Core CS</h3>
-          </div>
-          <ul class="skill-list skill-list-tags">
-            <li class="tag-pill">Data Structures &amp; Algorithms</li>
-            <li class="tag-pill">Object-Oriented Programming</li>
-            <li class="tag-pill">DBMS</li>
-            <li class="tag-pill">Computer Networks</li>
-            <li class="tag-pill">Operating Systems</li>
-            <li class="tag-pill">Software Engineering</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <!-- ─── SKILLS (React Redesign) ─────────────────────────── -->
+  <div id="skills-root"></div>
 
   <!-- ─── PROJECTS ──────────────────────────────────────────── -->
   <section id="projects" class="section">
@@ -1279,6 +1134,274 @@
         gsap.fromTo(heroHeading, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', delay: 0.2 });
       }
     });
+
+    // ── React Skills Component Mount ─────────────────────────────
+    (function() {
+      if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') return;
+
+      const { useState, useEffect, useRef } = React;
+
+      const skillsData = [
+        {
+          id: "languages",
+          title: "Languages",
+          description: "Core programming languages for web, software systems, and data processing.",
+          badge: "Core Languages",
+          icon: "devicon-javascript-plain colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-4",
+          skills: [
+            { name: "Java", icon: "devicon-java-plain colored", desc: "OOP & Enterprise Logic", highlight: true },
+            { name: "Python", icon: "devicon-python-plain colored", desc: "Scripting, FastAPI, ML", highlight: true },
+            { name: "JavaScript", icon: "devicon-javascript-plain colored", desc: "ES6+, Async/Await, Web APIs", highlight: true },
+            { name: "TypeScript", icon: "devicon-typescript-plain colored", desc: "Type Systems & Interfaces", highlight: true },
+            { name: "C", icon: "devicon-c-plain colored", desc: "Memory Mgt & Low-Level Logic", highlight: false }
+          ]
+        },
+        {
+          id: "frontend",
+          title: "Frontend",
+          description: "Crafting modern, responsive, high-performance web applications with rich user interaction.",
+          badge: "UI / UX Tech",
+          icon: "devicon-react-original colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-8",
+          skills: [
+            { name: "HTML5", icon: "devicon-html5-plain colored", desc: "Semantic & Accessible Web", highlight: false },
+            { name: "CSS3", icon: "devicon-css3-plain colored", desc: "Flexbox, Grid & Keyframes", highlight: false },
+            { name: "React", icon: "devicon-react-original colored", desc: "Hooks, Context & Performance", highlight: true },
+            { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored", desc: "Utility-First Styling", highlight: true },
+            { name: "Responsive Design", icon: "devicon-chrome-plain colored", desc: "Mobile-First Layouts & Media Queries", highlight: true }
+          ]
+        },
+        {
+          id: "backend",
+          title: "Backend",
+          description: "Building scalable server architecture, restful services, and lightweight API backends.",
+          badge: "Server & API",
+          icon: "devicon-nodejs-plain colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-6",
+          skills: [
+            { name: "Node.js", icon: "devicon-nodejs-plain colored", desc: "Async Runtime & Event Loop", highlight: true },
+            { name: "Express.js", icon: "devicon-express-original", desc: "RESTful Routing & Middleware", highlight: true },
+            { name: "REST APIs", icon: "devicon-fastapi-plain colored", desc: "JSON Endpoints & Microservices", highlight: true },
+            { name: "FastAPI", icon: "devicon-fastapi-plain colored", desc: "High Performance Python APIs", highlight: true }
+          ]
+        },
+        {
+          id: "databases",
+          title: "Databases",
+          description: "Designing schemas and managing relational and document databases with high query performance.",
+          badge: "Data Layer",
+          icon: "devicon-postgresql-plain colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-6",
+          skills: [
+            { name: "MySQL", icon: "devicon-mysql-plain colored", desc: "Relational Queries & Indexing", highlight: true },
+            { name: "MongoDB", icon: "devicon-mongodb-plain colored", desc: "NoSQL Documents & Pipelines", highlight: true },
+            { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", desc: "ACID Transactions & Data Integrity", highlight: true },
+            { name: "SQLite", icon: "devicon-sqlite-plain colored", desc: "Embedded Local Databases", highlight: false }
+          ]
+        },
+        {
+          id: "tools",
+          title: "Tools & Platforms",
+          description: "Modern developer workflow tools, version control, bundlers, and analytical software.",
+          badge: "Dev Workflow",
+          icon: "devicon-git-plain colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-7",
+          skills: [
+            { name: "Git", icon: "devicon-git-plain colored", desc: "Version Control & Branching", highlight: true },
+            { name: "GitHub", icon: "devicon-github-original", desc: "Collaboration & Code Reviews", highlight: true },
+            { name: "VS Code", icon: "devicon-vscode-plain colored", desc: "IDE Customization & Tooling", highlight: false },
+            { name: "Vite", icon: "devicon-vitejs-plain colored", desc: "Next-gen Frontend Tooling", highlight: true },
+            { name: "Power BI", icon: "devicon-windows8-original colored", desc: "Analytics & Dashboarding", highlight: false },
+            { name: "Excel", icon: "devicon-python-plain colored", desc: "Data Modeling & Formulas", highlight: false }
+          ]
+        },
+        {
+          id: "corecs",
+          title: "Core CS",
+          description: "Fundamental Computer Science engineering principles supporting robust software development.",
+          badge: "CS Principles",
+          icon: "devicon-cplusplus-plain colored",
+          gridSpan: "col-span-12 md:col-span-6 lg:col-span-5",
+          skills: [
+            { name: "Data Structures & Algorithms", icon: "devicon-cplusplus-plain colored", desc: "Problem Solving & Complexity Analysis", highlight: true },
+            { name: "Object-Oriented Programming", icon: "devicon-java-plain colored", desc: "Design Patterns & Abstraction", highlight: true },
+            { name: "DBMS", icon: "devicon-postgresql-plain colored", desc: "Normalization & SQL Systems", highlight: true },
+            { name: "Operating Systems", icon: "devicon-linux-plain colored", desc: "Process Synchronization & Memory", highlight: false },
+            { name: "Computer Networks", icon: "devicon-chrome-plain colored", desc: "TCP/IP, HTTP/S & Network Models", highlight: false },
+            { name: "Software Engineering", icon: "devicon-github-original", desc: "SDLC & Agile Methodologies", highlight: false }
+          ]
+        }
+      ];
+
+      function SkillBentoCard({ category, activeFilter }) {
+        const cardRef = useRef(null);
+        const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
+        const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
+        const [isHovered, setIsHovered] = useState(false);
+
+        const handleMouseMove = (e) => {
+          if (!cardRef.current) return;
+          const rect = cardRef.current.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -5;
+          const rotateY = ((x - centerX) / centerX) * 5;
+
+          setTransform(`perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`);
+          setGlowPos({ x: (x / rect.width) * 100, y: (y / rect.height) * 100 });
+        };
+
+        const handleMouseEnter = () => setIsHovered(true);
+        const handleMouseLeave = () => {
+          setIsHovered(false);
+          setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
+        };
+
+        const isHidden = activeFilter !== 'all' && activeFilter !== category.id;
+
+        if (isHidden) return null;
+
+        return React.createElement('div', {
+          ref: cardRef,
+          onMouseMove: handleMouseMove,
+          onMouseEnter: handleMouseEnter,
+          onMouseLeave: handleMouseLeave,
+          style: { transform, transition: isHovered ? "transform 0.1s ease-out" : "transform 0.5s ease-out" },
+          className: `${category.gridSpan} group relative rounded-2xl p-6 transition-all duration-300 bg-[#0d1527]/90 backdrop-blur-xl border border-white/10 hover:border-purple-500/50 shadow-2xl overflow-hidden flex flex-col justify-between`
+        }, [
+          /* Mouse Glow Effect */
+          React.createElement('div', {
+            key: 'glow',
+            className: "pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0",
+            style: {
+              background: `radial-gradient(500px circle at ${glowPos.x}% ${glowPos.y}%, rgba(139, 92, 246, 0.18), transparent 45%)`
+            }
+          }),
+
+          /* Main Content */
+          React.createElement('div', { key: 'content', className: "relative z-10" }, [
+            /* Header */
+            React.createElement('div', { key: 'header', className: "flex items-center justify-between mb-4" }, [
+              React.createElement('div', { key: 'title-wrap', className: "flex items-center space-x-3" }, [
+                React.createElement('div', { key: 'icon', className: "w-10 h-10 rounded-xl bg-purple-950/60 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-110 group-hover:border-purple-400/80 transition-all duration-300 shadow-inner" }, 
+                  React.createElement('i', { className: `${category.icon} text-xl` })
+                ),
+                React.createElement('h3', { key: 'title', className: "text-xl font-bold text-white tracking-wide group-hover:text-purple-300 transition-colors" }, category.title)
+              ]),
+              React.createElement('span', { key: 'badge', className: "text-[10px] sm:text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-900/40 text-purple-300 border border-purple-500/20 uppercase tracking-wider" }, category.badge)
+            ]),
+
+            /* Subtitle */
+            React.createElement('p', { key: 'desc', className: "text-slate-400 text-xs leading-relaxed mb-6" }, category.description),
+
+            /* Skills Pills */
+            React.createElement('div', { key: 'skills', className: "flex flex-wrap gap-2.5" }, 
+              category.skills.map((skill, sIdx) => 
+                React.createElement('div', {
+                  key: sIdx,
+                  className: `group/chip relative flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-medium border transition-all duration-300 cursor-default ${
+                    skill.highlight 
+                      ? 'bg-purple-950/40 text-slate-100 border-purple-500/30 hover:border-purple-400 hover:bg-purple-900/60 hover:text-white hover:shadow-[0_0_15px_rgba(139,92,246,0.35)]' 
+                      : 'bg-slate-900/60 text-slate-300 border-white/5 hover:border-slate-500 hover:bg-slate-800/60 hover:text-white'
+                  }`
+                }, [
+                  React.createElement('i', { key: 'icon', className: `${skill.icon} text-base group-hover/chip:scale-125 transition-transform duration-300` }),
+                  React.createElement('span', { key: 'name' }, skill.name),
+                  /* Tooltip */
+                  React.createElement('div', {
+                    key: 'tooltip',
+                    className: "absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 hidden group-hover/chip:flex flex-col items-center z-30 pointer-events-none"
+                  }, [
+                    React.createElement('div', { key: 'txt', className: "bg-slate-900 text-purple-200 text-[10px] px-2.5 py-1 rounded-md shadow-2xl border border-purple-500/40 whitespace-nowrap font-sans" }, skill.desc),
+                    React.createElement('div', { key: 'arrow', className: "w-2 h-2 bg-slate-900 rotate-45 -mt-1 border-r border-b border-purple-500/40" })
+                  ])
+                ])
+              )
+            )
+          ]),
+
+          /* Footer */
+          React.createElement('div', { key: 'footer', className: "relative z-10 mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-slate-500" }, [
+            React.createElement('span', { key: 'count' }, `${category.skills.length} Technologies`),
+            React.createElement('span', { key: 'explore', className: "group-hover:text-purple-400 group-hover:translate-x-1 transition-all duration-300 flex items-center gap-1 font-medium" }, [
+              "Mastery",
+              React.createElement('svg', { key: 'svg', className: "w-3 h-3", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, 
+                React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "2", d: "M14 5l7 7m0 0l-7 7m7-7H3" })
+              )
+            ])
+          ])
+        ]);
+      }
+
+      function SkillsSection() {
+        const [activeFilter, setActiveFilter] = useState("all");
+
+        const filters = [
+          { id: "all", label: "All Skills" },
+          { id: "languages", label: "Languages" },
+          { id: "frontend", label: "Frontend" },
+          { id: "backend", label: "Backend" },
+          { id: "databases", label: "Databases" },
+          { id: "tools", label: "Tools" },
+          { id: "corecs", label: "Core CS" }
+        ];
+
+        return React.createElement('section', { id: "skills", className: "relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden text-slate-100 font-sans" }, [
+          /* Ambient glowing background elements */
+          React.createElement('div', { key: 'glow1', className: "absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse" }),
+          React.createElement('div', { key: 'glow2', className: "absolute bottom-10 -right-20 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none animate-glow-pulse", style: { animationDelay: '2s' } }),
+
+          /* Section Header */
+          React.createElement('div', { key: 'header', className: "text-center max-w-3xl mx-auto mb-12" }, [
+            React.createElement('div', { key: 'label', className: "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-semibold uppercase tracking-widest mb-4 shadow-lg shadow-purple-950/40" }, [
+              React.createElement('span', { key: 'dot', className: "w-2 h-2 rounded-full bg-purple-400 animate-ping" }),
+              "Tech Stack & Expertise"
+            ]),
+            React.createElement('h2', { key: 'heading', className: "text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4" }, [
+              "Technical ",
+              React.createElement('span', { key: 'accent', className: "bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent" }, "Skills")
+            ]),
+            React.createElement('p', { key: 'sub', className: "text-slate-400 text-base sm:text-lg" }, 
+              "Technologies, frameworks, and engineering concepts I leverage to design and engineer production-grade applications."
+            )
+          ]),
+
+          /* Filter Pills */
+          React.createElement('div', { key: 'filters', className: "flex flex-wrap items-center justify-center gap-2 mb-12" }, 
+            filters.map(filter => 
+              React.createElement('button', {
+                key: filter.id,
+                onClick: () => setActiveFilter(filter.id),
+                className: `px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 border cursor-pointer ${
+                  activeFilter === filter.id
+                    ? 'bg-purple-600 text-white border-purple-400 shadow-[0_0_20px_rgba(139,92,246,0.5)] scale-105'
+                    : 'bg-[#0d1527]/70 text-slate-400 border-white/10 hover:border-purple-500/40 hover:text-white'
+                }`
+              }, filter.label)
+            )
+          ),
+
+          /* Bento Grid */
+          React.createElement('div', { key: 'grid', className: "grid grid-cols-12 gap-6 relative z-10" }, 
+            skillsData.map(category => 
+              React.createElement(SkillBentoCard, {
+                key: category.id,
+                category: category,
+                activeFilter: activeFilter
+              })
+            )
+          )
+        ]);
+      }
+
+      const rootEl = document.getElementById('skills-root');
+      if (rootEl) {
+        ReactDOM.createRoot(rootEl).render(React.createElement(SkillsSection));
+      }
+    })();
   </script>
 </body>
 </html>
