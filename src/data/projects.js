@@ -6,17 +6,17 @@
 
 export const projects = [
   {
-    id: 0,
-    num: '00',
-    title: 'Instagram Recommender System',
-    description:
-      'A scalable social media platform featuring a custom-built Hybrid Recommendation Engine. Delivers personalized content feeds by scoring users against trending metrics, social graphs, content topics, and collaborative filtering — all served through a lightning-fast FastAPI microservice architecture.',
-    badges: ['React', 'FastAPI', 'PostgreSQL', 'Python'],
-    github: 'https://github.com/prashantmalagi/instagram-recommender-system',
-    liveDemo: null,
-    image: '/recommender-dashboard.png',
-    name: 'Instagram Recommender System',
-    reverse: false,
+  id: 0,
+  num: '00',
+  title: 'AI Thumbnail Generator',
+  description:
+    'An AI-powered web application that generates professional thumbnails from user prompts using a React frontend and AI-powered image generation.',
+  badges: ['React', 'Node.js', 'Express.js', 'Sharp', 'REST API'],
+  github: 'https://github.com/prashantmalagi/ai-thumbnail-generator',
+  liveDemo: 'https://ai-thumbnail-generator-gamma.vercel.app/',
+  iconKey: 'ai',
+  name: 'AI Thumbnail Generator',
+  reverse: false,
   },
   {
     id: 1,
@@ -96,17 +96,17 @@ export const projects = [
     name: 'Vault Banking',
     reverse: true,
   },
-  {
-  id: 7,
-  num: '07',
-  title: 'AI Thumbnail Generator',
-  description:
-    'An AI-powered web application that generates professional thumbnails from user prompts using a React frontend and AI-powered image generation.',
-  badges: ['React', 'Node.js', 'Express.js', 'Sharp', 'REST API'],
-  github: 'https://github.com/prashantmalagi/ai-thumbnail-generator',
-  liveDemo: 'https://ai-thumbnail-generator-gamma.vercel.app/',
-  iconKey: 'ai',
-  name: 'AI Thumbnail Generator',
-  reverse: false,
+{
+    id: 0,
+    num: '00',
+    title: 'Instagram Recommender System',
+    description:
+      'A scalable social media platform featuring a custom-built Hybrid Recommendation Engine. Delivers personalized content feeds by scoring users against trending metrics, social graphs, content topics, and collaborative filtering — all served through a lightning-fast FastAPI microservice architecture.',
+    badges: ['React', 'FastAPI', 'PostgreSQL', 'Python'],
+    github: 'https://github.com/prashantmalagi/instagram-recommender-system',
+    liveDemo: null,
+    image: '/recommender-dashboard.png',
+    name: 'Instagram Recommender System',
+    reverse: false,
   },
 ];
