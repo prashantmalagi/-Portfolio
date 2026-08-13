@@ -96,4 +96,17 @@ export const projects = [
     name: 'Vault Banking',
     reverse: true,
   },
+  {
+  id: 7,
+  num: '07',
+  title: 'AI Thumbnail Generator',
+  description:
+    'An AI-powered web application that generates professional thumbnails from user prompts using a React frontend and AI-powered image generation.',
+  badges: ['React', 'Node.js', 'Express.js', 'Sharp', 'REST API'],
+  github: 'https://github.com/prashantmalagi/ai-thumbnail-generator',
+  liveDemo: 'https://ai-thumbnail-generator-gamma.vercel.app/',
+  iconKey: 'ai',
+  name: 'AI Thumbnail Generator',
+  reverse: false,
+  },
 ];
