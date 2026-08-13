@@ -29,7 +29,7 @@ export const projects = [
     liveDemo: '#',
     iconKey: 'portfolio',
     name: 'Portfolio Website',
-    reverse: false,
+    reverse: true,
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ export const projects = [
     liveDemo: null,
     iconKey: 'crm',
     name: 'Mini CRM',
-    reverse: false,
+    reverse: true,
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ export const projects = [
     liveDemo: 'https://interview-masterr.vercel.app/',
     iconKey: 'interview',
     name: 'Interview Master',
-    reverse: true,
+    reverse: false,
   },
   {
     id: 5,
@@ -121,7 +121,7 @@ export const projects = [
     liveDemo: null,
     iconKey: 'api',
     name: 'Student Records API',
-    reverse: true,
+    reverse: false,
   },
   {
     id: 9,
