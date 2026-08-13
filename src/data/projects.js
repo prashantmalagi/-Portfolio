@@ -34,15 +34,15 @@ export const projects = [
   {
     id: 2,
     num: '02',
-    title: 'Student Records API',
+    title: 'Instagram Recommender System',
     description:
-      'A robust REST API built using Node.js, Express, and PostgreSQL for managing student records. Supports full CRUD operations, authentication, and efficient database queries.',
-    badges: ['Node.js', 'Express', 'PostgreSQL', 'REST API'],
-    github: 'https://github.com/prashantmalagi/student-api',
+      'A scalable social media platform featuring a custom-built Hybrid Recommendation Engine. Delivers personalized content feeds by scoring users against trending metrics, social graphs, content topics, and collaborative filtering — all served through a lightning-fast FastAPI microservice architecture.',
+    badges: ['React', 'FastAPI', 'PostgreSQL', 'Python'],
+    github: 'https://github.com/prashantmalagi/instagram-recommender-system',
     liveDemo: null,
-    iconKey: 'api',
-    name: 'Student Records API',
-    reverse: true,
+    image: '/recommender-dashboard.png',
+    name: 'Instagram Recommender System',
+    reverse: false,
   },
   {
     id: 3,
@@ -60,6 +60,19 @@ export const projects = [
   {
     id: 4,
     num: '04',
+    title: 'Interview Master',
+    description:
+    'A full-stack AI-powered interview preparation platform with a React frontend and Node.js backend. Includes secure authentication, interactive interview sessions, AI-powered interview assistance, and interview report generation.',
+    badges: ['React', 'Vite', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'AI'],
+    github: 'https://github.com/prashantmalagi/Interview-Masterr',
+    liveDemo: 'https://interview-masterr.vercel.app/',
+    iconKey: 'interview',
+    name: 'Interview Master',
+    reverse: true,
+  },
+  {
+    id: 5,
+    num: '05',
     title: 'Krishi Mitra',
     description:
       'An AI-powered agricultural assistant built with Python & Flask. Integrates Google Gemini AI via OpenRouter, text-to-speech (gTTS), email verification (smtplib), and a modern UI with Jinja2, Tailwind CSS, and Bootstrap.',
@@ -69,10 +82,11 @@ export const projects = [
     iconKey: 'ai',
     name: 'Krishi Mitra',
     reverse: true,
-  },
+  },  
+  
   {
-    id: 5,
-    num: '05',
+    id: 6,
+    num: '06',
     title: 'Gym Management System',
     description:
       'A modern, responsive gym website created to promote a local fitness business. Features a clean design with membership plans, trainer profiles, and a contact section.',
@@ -84,8 +98,8 @@ export const projects = [
     reverse: false,
   },
   {
-    id: 6,
-    num: '06',
+    id: 7,
+    num: '07',
     title: 'Vault – Digital Banking',
     description:
       'A digital banking web application with a clean frontend and a Node.js REST API backend. Supports account management, transactions, and secure data operations.',
@@ -96,17 +110,34 @@ export const projects = [
     name: 'Vault Banking',
     reverse: true,
   },
-{
-    id: 0,
-    num: '00',
-    title: 'Instagram Recommender System',
+  {
+    id: 8,
+    num: '08',
+    title: 'Student Records API',
     description:
-      'A scalable social media platform featuring a custom-built Hybrid Recommendation Engine. Delivers personalized content feeds by scoring users against trending metrics, social graphs, content topics, and collaborative filtering — all served through a lightning-fast FastAPI microservice architecture.',
-    badges: ['React', 'FastAPI', 'PostgreSQL', 'Python'],
-    github: 'https://github.com/prashantmalagi/instagram-recommender-system',
+      'A robust REST API built using Node.js, Express, and PostgreSQL for managing student records. Supports full CRUD operations, authentication, and efficient database queries.',
+    badges: ['Node.js', 'Express', 'PostgreSQL', 'REST API'],
+    github: 'https://github.com/prashantmalagi/student-api',
     liveDemo: null,
-    image: '/recommender-dashboard.png',
-    name: 'Instagram Recommender System',
-    reverse: false,
+    iconKey: 'api',
+    name: 'Student Records API',
+    reverse: true,
   },
+  {
+    id: 9,
+    num: '09',
+    title: 'Interview Master',
+    description:
+    'A full-stack AI-powered interview preparation platform with a React frontend and Node.js backend. Includes secure authentication, interactive interview sessions, AI-powered interview assistance, and interview report generation.',
+    badges: ['React', 'Vite', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'AI'],
+    github: 'https://github.com/prashantmalagi/Interview-Masterr',
+    liveDemo: 'https://interview-masterr.vercel.app/',
+    iconKey: 'interview',
+    name: 'Interview Master',
+    reverse: true,
+  },
+
+
+  
+  
 ];
