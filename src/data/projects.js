@@ -40,7 +40,6 @@ export const projects = [
     badges: ['React', 'FastAPI', 'PostgreSQL', 'Python'],
     github: 'https://github.com/prashantmalagi/instagram-recommender-system',
     liveDemo: null,
-    image: '/recommender-dashboard.png',
     name: 'Instagram Recommender System',
     reverse: false,
   },
